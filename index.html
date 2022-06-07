@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Jordi Muñoz Galmés">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robot submarí</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/loading.css">
+
+    <!-- JS -->
+    <script src="js/paho.javascript-1.0.3/paho-mqtt.js" type="text/javascript"></script>
+    <script src="js/intro_host.js" type="text/javascript"></script>
+    <script src="js/motor.js"></script>
+    <script src="js/ui.js" type="text/javascript"></script>
+    <script src="js/keyboard.js" type="text/javascript"></script>
+    <script src="js/joystick.js" type="text/javascript"></script>
+    <script src="js/mqtt.js" type="text/javascript"></script>
+    <script src="js/stream.js"></script>
+  </head>
+  <body>
+
+    <div class="loading-overlay" id="loading-overlay">
+      <div class="center">
+        <div style="margin-top: 3em">
+          <div class="loading-container">
+            <div class="loading"></div>
+            <div id="loading-text">Connecting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-panel top-left estat-cont" id="estat-cont">
+      <div class="center">
+        <div id="estat" class="estat">
+          A message goes here. にゃー
+        </div>
+      </div>
+    </div>
+
+    <div class="pantalla center" style="display: flex">
+      <div>
+        <h1>Robot submarí</h1>
+        <div>Loading ^.^</div>
+      </div>
+    </div>
+
+    <div class="pantalla" id="intro">
+      <div class="center intro">
+        <div class="login-cont">
+          <h1 class="banner">Robot submarí</h1>
+
+          <div style="height: 2em"></div>
+
+          <input type="text" id="host-ip" placeholder="Host o IP del submarí">
+
+          <div style="height: 2em"></div>
+
+          <div class="checkbox">
+            <input type="checkbox" id="init-autoplay" name="init-autoplay" checked>
+            <label for="init-autoplay">Start steaming</label>
+          </div>
+
+          <div style="height: 2em"></div>
+
+          <button class="login" id="submit-ip" onclick="start_connection()">
+            Connectar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content pantalla" id="panel">
+      <div>
+        <div class="interface stream" oncontextmenu="disable_contextmenu()">
+	  <img
+            id="streaming"
+            src="images/stream_off.png"
+            alt="Not image available"
+            onerror="stream_error()"
+          />
+        </div>
+
+        <div class="button-panel center-left mobile">
+	  <div>
+	    <button class="motor move" id="up" ontouchstart="emerge()" ontouchend="stop()" title="Emerge">↑</button>
+	  </div>
+	  <div>
+	    <button class="motor move" id="down" ontouchstart="immerse()" ontouchend="stop()" title="Immerse">↓</button>
+	  </div>
+        </div>
+
+        <div class="button-panel bottom-right horitzontal mobile">
+	  <button class="motor move" ontouchstart="turn_left()" ontouchend="stop()" title="Rotate left">↺</button>
+	  <button class="motor move" ontouchstart="turn_right()" ontouchend="stop()" title="Rotate right">↻</button>
+        </div>
+        
+        <div class="button-panel bottom-left horitzontal">
+	  <button class="motor follow" id="follow-button" onclick="follow()" title="Follow">🎈</button>
+	  <button class="motor streaming" id="stream-button" onclick="stream()" title="Play/pause Stream">📺</button>
+	  <button class="motor camera" onclick="stream_screenshot()" title="Capture shot">📷</button>
+	  <button class="motor stop move" onclick="stop()" title="Stop">🛑</button>
+        </div>
+
+        <div class="button-panel center-right move mobile">
+          <canvas id="joystick" class="joystick">
+            Wops. Canvas unsuported.
+          </canvas>
+        </div>
+
+        <div class="button-panel top-left">
+	  <button class="motor" id="fullscreen" onclick="change_fullscreen()" title="FullScreen" style="font-size: 2.5vw; padding-left: .1vw;" value="close">⏻</button>
+        </div>
+
+        <div class="help" id="help">
+          <div class="center">
+            <div class="helpbox">
+              <h1 class="banner">Robot submarí</h1>
+              <div>Dreceres de teclat:</div>
+              <div id="help-keyboard" class="help-keyboard">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-panel top-right">
+	  <button class="motor" id="helpbut" ontouchstart="ui_help()" ontouchend="ui_help_hide()" title="Help">?</button>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </body>
+</html>
+
+

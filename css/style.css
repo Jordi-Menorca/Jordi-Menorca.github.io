@@ -1,0 +1,226 @@
+:root {
+    --button-background: linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 100%);
+}
+
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,110,164,1) 100%);
+    background-size: 100vw 100vh;
+    height: 100vw;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.banner {
+    font-size: 3em;
+}
+
+.pantalla {
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+}
+
+.pantalla > div {
+    height: 100vh;
+}
+
+div.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-cont {
+    color: white;
+}
+
+/* Inputs */
+
+input {
+    font-size: 1.5em;
+    width: calc(100% - 2em);
+    padding: .3em 1em .3em 1em;
+}
+
+div.checkbox {
+    display: block;
+    height: 1.3em;
+    font-size: 1.3em;
+    justify-content: flex-start;
+}
+div.checkbox > input {
+    width: .6em;
+    height: .6em;
+}
+div.checkbox > label {
+    display: inline;
+}
+
+/* State message */
+
+.estat-cont {
+    width: 100vw;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.estat {
+    display: inline-block;
+    font-size: 1.2em;
+    color: white;
+    padding: .3em 1em .3em 1em;
+    background: var(--button-background);
+    border-radius: 0 0 .5em .5em;
+}
+
+/* Streaming video interface */
+
+.interface {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#streaming {
+    object-fit: contain;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Panel button areas */
+
+.button-panel {
+    position: fixed;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+
+.center-left {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+.center-right {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.horitzontal {
+    display: flex;
+}
+
+/* Joystick */
+
+.joystick {
+    width: 20vw;
+    height: 20vw;
+}
+
+/* Misc */
+
+.botons.vert {
+    position: relative;
+    border: solid 1px;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+}
+
+.botons.horitz {
+    position: relative;
+    border: solid 1px;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+}
+
+/* Imatge */
+
+img.streaming-on {
+    transform: rotate(180deg);
+}
+
+/* Help overlayer */
+
+.help {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    color: white;
+}
+
+.helpbox {
+    background: var(--button-background);
+    padding: .5em 2em 2em 2em;
+    border-radius: 1em;
+    margin-top: 3em;
+}
+
+.help-keyboard {
+    /* yup */
+}
+
+.help-keyboard > .row {
+    display: flex;
+    margin-top: .3em;
+    align-items: center;
+}
+
+.help-keyboard > .row > .keys {
+    display: flex;
+}
+
+.key {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    margin-right: .3em;
+    padding: .2em;
+    min-width: 1.2em;
+    font-family: monospace;
+    text-align: center;
+}
+
+.help-keyboard > .row > .description {
+    width: 100%;
+    margin-left: 1em;
+}
+
+.hide {
+    display: none !important;
+}
